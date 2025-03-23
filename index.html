@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeatherSync - Advanced Weather Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="weather-container">
+    <header>
+        <h1><span class="rotating-globe">🌍</span> WeatherSync</h1>
+
+      <div class="search-container">
+        <input type="text" id="citySearch" placeholder="Search city or coordinates (e.g., London or 51.5074,-0.1278)">
+        <button id="searchBtn">🔍 Search</button>
+        <button id="geolocateBtn">📍 My Location</button>
+        <button id="themeToggle">🌙 Toggle Theme</button>
+
+      </div>
+    </header>
+
+    <main>
+      <section id="currentWeather" class="current-weather">
+        <div class="loading-overlay">
+          <div class="spinner"></div>
+          <p>Fetching weather data...</p>
+        </div>
+      </section>
+
+      <section class="forecast-container">
+        <h2>7-Day Forecast</h2>
+        <div class="forecast-info-container">
+          <div id="forecastGrid" class="forecast-grid"></div>
+        </div>
+      </section>
+
+      <section class="additional-info">
+        <div class="weather-info-container">
+          <div class="info-grid">
+            <div class="info-card" id="humidityCard">
+              <h3>💧 Humidity</h3>
+              <p id="humidityValue">--</p>
+            </div>
+            <div class="info-card" id="windCard">
+              <h3>💨 Wind Speed</h3>
+              <p id="windValue">--</p>
+            </div>
+            <div class="info-card" id="pressureCard">
+              <h3>🌬️ Pressure</h3>
+              <p id="pressureValue">--</p>
+            </div>
+            <div class="info-card" id="uvCard">
+              <h3>☀️ UV Index</h3>
+              <p id="uvValue">--</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+
+    <footer>
+      <p>© 2025 WeatherSync</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
