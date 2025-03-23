@@ -5,4 +5,4 @@
 
  This simple front-end project consists of a web-based weather application, that provides us with real-time weather parameters of any worldwide location. 
  
- View website here -> 
+ View website here -> https://shubh3008-tech.github.io/WeatherSync/
