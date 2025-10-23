@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* App base styles */
+:root {
+  color-scheme: light dark;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  @apply bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 min-h-screen antialiased;
+}
+
+#root { @apply min-h-screen; }
+
+/* TinyMCE content area basic typography without typography plugin */
+.mce-content-body {
+  @apply max-w-none leading-relaxed; /* space-y-4 would affect children; left to editor content */
+}
