@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { initTheme } from './features/theme/themeSlice';
+import { checkSession } from './features/auth/authSlice';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import Post from './pages/Post';
+import CreatePost from './pages/CreatePost';
+import EditPost from './pages/EditPost';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Profile from './pages/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
+import './index.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(initTheme());
+    dispatch(checkSession());
+  }, [dispatch]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/post/:id" element={<Post />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/create" element={<CreatePost />} />
+              <Route path="/edit/:id" element={<EditPost />} />
+              <Route path="/profile" element={<Profile />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
